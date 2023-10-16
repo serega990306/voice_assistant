@@ -1,15 +1,11 @@
 from pydantic import Field
 from pydantic_settings import BaseSettings
 
-env_file = ".env.example"
+env_file = ".env"
 
 
 class Settings(BaseSettings):
-    queue: str = Field(env="QUEUE")
-    host: str = Field(env="HOST")
-    port: str = Field(env="PORT")
-    name: str = Field(env="NAME")
-    password: str = Field(env="PASSWORD")
+    openai_api_key: str = Field(env="OPENAI_API_KEY")
 
     class Config:
         env_file = env_file

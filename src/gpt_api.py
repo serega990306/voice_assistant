@@ -1,15 +1,18 @@
-import openapi
+import openai
+
+from config import settings
 
 
 class GPT:
 
     def __init__(self):
-        openapi.api_key = "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"
+        openai.api_key = settings.openai_api_key
+        print(settings.openai_api_key)
         self.__messages = list()
 
     def request(self, task):
         self.__messages.append(dict(role="user", content=task))
-        answer = openapi.ChatCompletion.create(
+        answer = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=self.__messages
         )
